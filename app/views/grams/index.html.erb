@@ -6,6 +6,15 @@
       <div class="handle"><%= gram.user.email %></div>
       <%= gram.message %>
       <%= image_tag gram.picture.url unless gram.picture.nil? %>
+
+      <div class="gram-actions float-right">
+        <% if current_user && current_user == gram.user %>
+          <%= link_to 'Edit', edit_gram_path(gram) %>
+        <% end %>
+        <%= link_to 'Destroy', gram_path(gram), method: :delete, data: {confirm: 'Are you sure?'} %>
+      </div>
+      <br class="clear-fix" />
+      
     </div>
     <% end %>
 </div>
